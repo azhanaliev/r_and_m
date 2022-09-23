@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r_and_m/bloc/character_bloc.dart';
 import 'package:r_and_m/data/models/character.dart';
+import 'package:r_and_m/ui/widgets/custom_list_tile.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -84,7 +85,7 @@ class _SearchPageState extends State<SearchPage> {
               _currentCharacter = characterLoaded;
               _currentResults = _currentCharacter.results;
               return _currentResults.isNotEmpty
-                  ? Text('$_currentResults')
+                  ? _customListView(_currentResults)
                   : const SizedBox();
             },
             error: () => const Text('Nothing found...'),
@@ -101,8 +102,12 @@ class _SearchPageState extends State<SearchPage> {
       ),
       itemCount: currentResults.length,
       shrinkWrap: true,
-      itemBuilder: (context, index){
-
+      itemBuilder: (context, index) {
+        final result = currentResults[index];
+        return Padding(
+            padding:
+                const EdgeInsets.only(top: 3, bottom: 3, right: 16, left: 16),
+            child: CustomListTile(result: result));
       },
     );
   }
