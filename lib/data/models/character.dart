@@ -4,9 +4,9 @@ part 'character.freezed.dart';
 
 part 'character.g.dart';
 
-@freezed
+@unfreezed
 class Character with _$Character {
-  const factory Character({
+  factory Character({
     required Info info,
     required List<Results> results,
   }) = _Character;

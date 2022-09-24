@@ -21,7 +21,9 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Character {
   Info get info => throw _privateConstructorUsedError;
+  set info(Info value) => throw _privateConstructorUsedError;
   List<Results> get results => throw _privateConstructorUsedError;
+  set results(List<Results> value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -104,7 +106,7 @@ class __$$_CharacterCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
           : info // ignore: cast_nullable_to_non_nullable
               as Info,
       results: results == freezed
-          ? _value._results
+          ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
               as List<Results>,
     ));
@@ -114,41 +116,20 @@ class __$$_CharacterCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Character implements _Character {
-  const _$_Character({required this.info, required final List<Results> results})
-      : _results = results;
+  _$_Character({required this.info, required this.results});
 
   factory _$_Character.fromJson(Map<String, dynamic> json) =>
       _$$_CharacterFromJson(json);
 
   @override
-  final Info info;
-  final List<Results> _results;
+  Info info;
   @override
-  List<Results> get results {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
-  }
+  List<Results> results;
 
   @override
   String toString() {
     return 'Character(info: $info, results: $results)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Character &&
-            const DeepCollectionEquality().equals(other.info, info) &&
-            const DeepCollectionEquality().equals(other._results, _results));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(info),
-      const DeepCollectionEquality().hash(_results));
 
   @JsonKey(ignore: true)
   @override
@@ -164,17 +145,18 @@ class _$_Character implements _Character {
 }
 
 abstract class _Character implements Character {
-  const factory _Character(
-      {required final Info info,
-      required final List<Results> results}) = _$_Character;
+  factory _Character({required Info info, required List<Results> results}) =
+      _$_Character;
 
   factory _Character.fromJson(Map<String, dynamic> json) =
       _$_Character.fromJson;
 
   @override
   Info get info;
+  set info(Info value);
   @override
   List<Results> get results;
+  set results(List<Results> value);
   @override
   @JsonKey(ignore: true)
   _$$_CharacterCopyWith<_$_Character> get copyWith =>
